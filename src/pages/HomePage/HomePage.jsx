@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { query } from "../../fatch";
-import { Link } from "react-router-dom";
+
 import style from "./style.module.css";
+import { List } from "../../components/index";
 
 
 
-export function HomePage(params) {
+export default function HomePage(params) {
     const [homeData, setHomeData] = useState(null);
 
     let markup;
@@ -18,16 +19,16 @@ export function HomePage(params) {
          (<>
          <h2
          className={style.title}
-         >Trenting today</h2>
-            <ul>
-                {homeData.map((el) =>
-                (<li key={el.id}>
-                    <Link to="">{el.title}</Link>
-                </li>))}
-         </ul>
+         >Trenting today
+         </h2>
+         <List
+             dataArray={homeData}
+         />
      </>)
     }else{markup=null}
     return markup
     
     
 }
+
+

@@ -1,7 +1,7 @@
 import {useState} from "react"
 
 
-export function MoviesPage() {
+export default function MoviesPage() {
 
     const [text, setText] = useState("");
     

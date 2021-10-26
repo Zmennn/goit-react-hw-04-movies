@@ -1,0 +1,14 @@
+.link {
+  margin-left: 30px;
+  font-size: 25px;
+}
+.activeLink {
+  margin-left: 30px;
+  font-size: 25px;
+  color: tomato;
+}
+.section {
+  border-bottom: grey solid 2px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

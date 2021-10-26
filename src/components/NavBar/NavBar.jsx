@@ -6,7 +6,7 @@ export function NavBar() {
         <section
         className={style.section}
         >
-            <NavLink to="/" className={style.link} activeClassName={style.activeLink}>
+            <NavLink to="/" exact className={style.link} activeClassName={style.activeLink}>
               Home
         </NavLink>
             <NavLink to="/movies" className={style.link} activeClassName={style.activeLink}>

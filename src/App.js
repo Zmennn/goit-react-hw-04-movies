@@ -18,11 +18,11 @@ function App() {
       <NavBar />
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          <Route path="/" exact component={HomePage} />
+          <Route exact path="/" component={HomePage} />
 
-          <Route path="/movies" component={MoviesPage} />
+          <Route exact path="/movies" component={MoviesPage} />
 
-          <Route>
+          <Route path="/movies/:id">
             <MovieDetailsPage />
           </Route>
         </Switch>

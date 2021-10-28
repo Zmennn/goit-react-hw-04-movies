@@ -19,7 +19,7 @@ export default function HomePage(params) {
          (<>
          <h2
          className={style.title}
-         >Trenting today
+         >Trending today
          </h2>
          <List
              dataArray={homeData}

@@ -5,7 +5,7 @@ export function List({ dataArray }) {
         <ul>
                 {dataArray.map((el) =>
                 (<li key={el.id}>
-                    <Link to="">{el.title}</Link>
+                    <Link to={`/movies/${el.id}`}>{el.title}</Link>
                 </li>))}
         </ul>
      )

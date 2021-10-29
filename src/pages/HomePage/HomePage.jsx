@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { query } from "../../fatch";
+import { query } from "../../fetch";
 
 import style from "./style.module.css";
 import { List } from "../../components/index";

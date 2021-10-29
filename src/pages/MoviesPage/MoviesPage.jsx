@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory,useLocation,Route } from "react-router";
-import { query } from "../../fatch";
+import { query } from "../../fetch";
 import { List } from "../../components";
-
-
 
 export default function MoviesPage() {
     const history = useHistory();
@@ -12,9 +10,8 @@ export default function MoviesPage() {
     const [urlSearch, setUrlSearch] = useState(()=>new URLSearchParams(location.search).get("query"));
     const [filmList, setFilmList] = useState([]);
 
-
     useEffect(() => {
-        if (urlSearch === "") { return };
+        if (urlSearch === ""||urlSearch === null) { return };
         query("search/movie", [["query", urlSearch]])
         .then((res) =>setFilmList(res.data.results))
         .catch((err) => { console.log(err) });
@@ -40,13 +37,9 @@ export default function MoviesPage() {
         <button type="submit">search</button>
         </form>
         <Route exact path="/movies">
-            <h2>List films</h2>
             <List
              dataArray={filmList}
          />
         </Route>
-
-        </>)
-        
-    
+        </>)    
 }

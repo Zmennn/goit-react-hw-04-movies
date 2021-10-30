@@ -6,7 +6,7 @@ export function Reviews({ filmId }) {
 
     useEffect(() => {
         query(`/3/movie/${filmId}/reviews`, [])
-            .then((res) => { console.log(res); setDataReviews(res) })
+            .then((res) => {  setDataReviews(res) })
             .catch((err) => console.log(err));
     }, [filmId]
     )

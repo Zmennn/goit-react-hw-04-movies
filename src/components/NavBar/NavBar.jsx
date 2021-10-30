@@ -2,9 +2,6 @@ import { NavLink } from "react-router-dom";
 import style from "./style.module.css";
 
 export function NavBar() {
-
-    // const location = useLocation();
-
     return (
         <section
         className={style.section}

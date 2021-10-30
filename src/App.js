@@ -1,9 +1,5 @@
-// import { Suspense } from 'react/cjs/react.production.min';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { NavBar } from './components/index';
-// import HomePage from './pages/HomePage/HomePage.jsx';
-// import MoviesPage from './pages/MoviesPage/MoviesPage.jsx';
-// import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage.jsx';
 import React, { lazy, Suspense } from 'react';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
@@ -25,6 +21,7 @@ function App() {
           <Route path="/movies/:movieId">
             <MovieDetailsPage />
           </Route>
+          <Redirect to="/" />
         </Switch>
       </Suspense>
     </>

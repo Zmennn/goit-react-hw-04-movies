@@ -1,24 +1,36 @@
-import { useLocation, useParams } from "react-router";
-import { useEffect, useState } from "react";
+import { useLocation, useParams,useHistory } from "react-router";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { query } from "../../fetch";
 import { NavLink, Route } from "react-router-dom";
-import { Cast } from "../../components/Cast/Cast";
+import { Cast,Reviews } from "../../components";
+
 
 export default function MovieDetailsPage() {
     const [filmData,setFilmData] = useState(null);
     const params = useParams();
     const location = useLocation();
-
+    const history = useHistory();
+    const pathBack = useRef(location?.state?.from ?? "/");
+    const requestBack=useRef(location?.state?.search??"")
+    
     useEffect(() => {    
         query(`movie/${ params.movieId }`, [])
-            .then((res) => {console.log(res); setFilmData(res) })
+            .then((res) => { setFilmData(res) })
             .catch((err) => console.log(err));
     }, [params]);
     
+    const handleClickGoBack = useCallback(() => {
+        console.log(location);
+        history.push({
+            pathname: pathBack.current,
+           search: requestBack.current
+        })
+    },[location,history])
      
     if (filmData) {
         return (<>
             <div>
+                <button type="button" onClick={handleClickGoBack}>Go back</button>
              <img src={`https://image.tmdb.org/t/p/w500${filmData.data.poster_path}`} alt="" />
              <div>
                 <h3>{filmData.data.title}</h3>
@@ -31,8 +43,24 @@ export default function MovieDetailsPage() {
             </div>
             <div>
                 <h3> Additional information</h3>
-                <NavLink to={`/movies/${params.movieId}/cast`}>Cast</NavLink>
-                <NavLink to={`/movies/${params.movieId}/reviews`}>Reviews</NavLink>
+                <NavLink 
+                 to={{
+                            pathname: `/movies/${params.movieId}/cast`,
+                            // state: {
+                            //     from: location.state.from,
+                            //     search:location.state.search
+                            // }
+                        }}
+                >Cast</NavLink>
+                <NavLink 
+                to={{
+                            pathname: `/movies/${params.movieId}/reviews`,
+                            // state: {
+                            //     from: location.pathname,
+                            //     search:location.search
+                            // }
+                        }}
+                >Reviews</NavLink>
             </div>
             <Route  path="/movies/:movieId/cast">
                 <Cast
@@ -40,7 +68,9 @@ export default function MovieDetailsPage() {
                 />
             </Route>
             <Route  path="/movies/:movieId/reviews">
-                <h1>rev</h1>
+                <Reviews
+                filmId={params.movieId}
+                />
             </Route>
             </>
         )
@@ -50,3 +80,5 @@ export default function MovieDetailsPage() {
 }
 
 
+// to={`/movies/${params.movieId}/cast`}
+// to={`/movies/${params.movieId}/reviews`}

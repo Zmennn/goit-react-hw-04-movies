@@ -1,5 +1,6 @@
 import { query } from "../../fetch";
 import { useEffect, useState } from "react";
+import style from "./style.module.css";
 
 export function Reviews({ filmId }) {
     const [dataReviews, setDataReviews] = useState();
@@ -15,12 +16,18 @@ export function Reviews({ filmId }) {
     if (dataReviews) {
         
         if (dataReviews.data.results.length > 0) {
-            return dataReviews.data.results.map((el) => (
-                <div key={el.id}>
-                    <h4>{el.author}</h4>
-                    <div>{el.content}</div>
-                </div>
-            ))
+            return(
+        <ul >
+              {
+                dataReviews.data.results.map((el) => (
+                    <li key={el.id}>
+                        <h4>{el.author}</h4>
+                        <div className={style.container}>{el.content}</div>
+                    </li>
+                ))
+                    }
+        </ul>
+            )
         } else { return <h4>We dont hawe any reviews for this film</h4> }
     } else {return null}
 }

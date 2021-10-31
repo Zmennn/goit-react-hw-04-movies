@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { query } from "../../fetch";
 import { NavLink, Route } from "react-router-dom";
 import { Cast, Reviews } from "../../components";
-import style from "./style.module.css"
+import style from "./style.module.css";
 
 
 export default function MovieDetailsPage() {
@@ -25,13 +25,14 @@ export default function MovieDetailsPage() {
             pathname: pathBack.current,
            search: requestBack.current
         })
-    },[location,history])
+    },[history])
      
     if (filmData) {
         return (<>
+        <div className={style.mainCont}>
             <div className={style.imgCont}>
                 <button className={style.goButtom} type="button" onClick={handleClickGoBack}>Go back</button>
-                <img src={`https://image.tmdb.org/t/p/w500${filmData.data.poster_path}`} alt="film poster" />
+                <img className={style.mainImg} src={`https://image.tmdb.org/t/p/w500${filmData.data.poster_path}`} alt="film poster" />
             </div>
             <div className={style.textCont}>
                 <h3>{filmData.data.title}</h3>
@@ -42,14 +43,25 @@ export default function MovieDetailsPage() {
                 <p>{filmData.data.genres.map((el)=>`${el.name} `) }</p>
              
             </div>
-            <div>
+        </div>
+            <div className={style.addCont}>
                 <h3> Additional information</h3>
-                <NavLink 
-                 to={{ pathname: `/movies/${params.movieId}/cast`}}
-                >Cast</NavLink>
-                <NavLink 
-                to={{ pathname: `/movies/${params.movieId}/reviews`}}
-                >Reviews</NavLink>
+                <ul>
+                    <li>
+                        <NavLink
+                            className={style.addButton}
+                            activeClassName={style.activeAddButton}
+                            to={{ pathname: `/movies/${params.movieId}/cast`}}
+                            >Cast</NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            className={style.addButton}
+                            activeClassName={style.activeAddButton}
+                            to={{ pathname: `/movies/${params.movieId}/reviews`}}
+                            >Reviews</NavLink>
+                    </li>
+              </ul>
             </div>
             <Route  path="/movies/:movieId/cast">
                 <Cast

@@ -1,0 +1,11 @@
+.img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+}
+.title {
+  font-size: 20;
+}
+.container {
+  padding-left: 30px;
+}

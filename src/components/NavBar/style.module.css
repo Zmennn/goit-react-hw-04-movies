@@ -1,11 +1,13 @@
 .link {
   margin-left: 30px;
   font-size: 25px;
+  color: grey;
+  font-weight: 700;
 }
 .activeLink {
   margin-left: 30px;
   font-size: 25px;
-  color: tomato;
+  color: rgb(133, 14, 14);
 }
 .section {
   border-bottom: grey solid 2px;

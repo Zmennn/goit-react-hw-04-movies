@@ -1,5 +1,6 @@
 import { query } from "../../fetch";
 import { useEffect, useState } from "react";
+import style from "./style.module.css"
 
 export function Cast({ filmId }) {
     const [dataCast, setDataCast] = useState(null);
@@ -21,9 +22,9 @@ export function Cast({ filmId }) {
     
     if (dataCast) {
         return dataCast.data.cast.map((el) => (
-            <div key={el.id}>
-              <p>{el.name}</p>
-                <img src={imgUrl(el)} alt={el.name}  />
+            <div className={style.container} key={el.id}>
+              <p className={style.title}>{el.name}</p>
+                <img className={style.img} src={imgUrl(el)} alt={el.name}  />
             </div> 
         ))
     } else{return null}

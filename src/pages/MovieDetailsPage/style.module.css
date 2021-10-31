@@ -1,10 +1,49 @@
 .imgCont {
-  display: inline-block;
+  padding-left: 30px;
+  padding-top: 10px;
 }
 
 .goButtom {
   display: block;
+  width: 100px;
+  height: 35px;
+  background-color: khaki;
+  color: grey;
+
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 20% 0 0 20%;
+}
+.mainImg {
+  display: block;
+  margin-top: 10px;
+  width: 500px;
+  height: 750px;
+  object-fit: cover;
 }
 .textCont {
-  display: inline-block;
+  padding-top: 70px;
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+.mainCont {
+  display: flex;
+  border-bottom: grey solid 2px;
+  padding-bottom: 10px;
+}
+.addCont {
+  padding-top: 20px;
+  padding-left: 30px;
+  border-bottom: grey solid 2px;
+  padding-bottom: 10px;
+}
+.addButton {
+  color: grey;
+  font-size: 20px;
+  font-weight: 700;
+}
+.activeAddButton {
+  color: rgb(133, 14, 14);
 }

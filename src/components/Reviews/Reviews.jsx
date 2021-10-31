@@ -1,6 +1,7 @@
 import { query } from "../../fetch";
 import { useEffect, useState } from "react";
 import style from "./style.module.css";
+import PropTypes from "prop-types";
 
 export function Reviews({ filmId }) {
     const [dataReviews, setDataReviews] = useState();
@@ -32,3 +33,7 @@ export function Reviews({ filmId }) {
     } else {return null}
 }
 
+Reviews.propTypes = {
+  filmId: PropTypes.string.isRequired
+  
+}

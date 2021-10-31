@@ -6,7 +6,7 @@ import { List } from "../../components/index";
 
 
 
-export default function HomePage(params) {
+export default function HomePage() {
     const [homeData, setHomeData] = useState(null);
 
     let markup;

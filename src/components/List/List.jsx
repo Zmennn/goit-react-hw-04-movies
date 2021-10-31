@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"; 
 import { useLocation } from "react-router";
+import PropTypes from "prop-types";
 
 export function List({ dataArray }) {
     const location = useLocation();
@@ -23,4 +24,9 @@ export function List({ dataArray }) {
                 </li>))}
         </ul>
      )
- }
+}
+ 
+List.propTypes = {
+  filmId: PropTypes.array
+  
+}

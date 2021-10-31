@@ -1,6 +1,7 @@
 import { query } from "../../fetch";
 import { useEffect, useState } from "react";
-import style from "./style.module.css"
+import style from "./style.module.css";
+import PropTypes from "prop-types";
 
 export function Cast({ filmId }) {
     const [dataCast, setDataCast] = useState(null);
@@ -30,3 +31,7 @@ export function Cast({ filmId }) {
     } else{return null}
 }
 
+Cast.propTypes = {
+  filmId: PropTypes.string.isRequired
+  
+}
